@@ -9,25 +9,11 @@ from sklearn.metrics import accuracy_score
 from xgboost import XGBClassifier
 
 # Load dataset
-df = pd.read_csv("flood.csv")
+df = pd.read_excel("flood dataset.xlsx")
 
-# Create classification target
-df["Flood"] = (df["FloodProbability"] >= 0.5).astype(int)
-
-# Select only 8 important features
-selected_features = [
-    'MonsoonIntensity',
-    'TopographyDrainage',
-    'RiverManagement',
-    'ClimateChange',
-    'DrainageSystems',
-    'CoastalVulnerability',
-    'Landslides',
-    'Watersheds'
-]
-
-X = df[selected_features]
-y = df["Flood"]
+# Features and Target
+X = df.drop("flood", axis=1)
+y = df["flood"]
 
 # Train-Test Split
 X_train, X_test, y_train, y_test = train_test_split(
@@ -44,34 +30,29 @@ print("Testing data shape:", X_test.shape)
 dt_model = DecisionTreeClassifier(random_state=42)
 dt_model.fit(X_train, y_train)
 dt_pred = dt_model.predict(X_test)
-dt_acc = accuracy_score(y_test, dt_pred)
-print("Decision Tree Accuracy:", dt_acc)
+print("Decision Tree Accuracy:", accuracy_score(y_test, dt_pred))
 
 # Random Forest
 rf_model = RandomForestClassifier(random_state=42)
 rf_model.fit(X_train, y_train)
 rf_pred = rf_model.predict(X_test)
-rf_acc = accuracy_score(y_test, rf_pred)
-print("Random Forest Accuracy:", rf_acc)
+print("Random Forest Accuracy:", accuracy_score(y_test, rf_pred))
 
 # KNN
 knn_model = KNeighborsClassifier()
 knn_model.fit(X_train, y_train)
 knn_pred = knn_model.predict(X_test)
-knn_acc = accuracy_score(y_test, knn_pred)
-print("KNN Accuracy:", knn_acc)
+print("KNN Accuracy:", accuracy_score(y_test, knn_pred))
 
 # XGBoost
 xgb_model = XGBClassifier(
     random_state=42,
-    use_label_encoder=False,
     eval_metric='logloss'
 )
 
 xgb_model.fit(X_train, y_train)
 xgb_pred = xgb_model.predict(X_test)
-xgb_acc = accuracy_score(y_test, xgb_pred)
-print("XGBoost Accuracy:", xgb_acc)
+print("XGBoost Accuracy:", accuracy_score(y_test, xgb_pred))
 
 # Save best model
 joblib.dump(xgb_model, "floods.save")

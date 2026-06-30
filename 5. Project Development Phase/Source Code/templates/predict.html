@@ -9,28 +9,41 @@
 <div class="container">
 
     <h1>🌊 Flood Prediction Form</h1>
-
-    <p>Enter the environmental parameters below.</p>
+    <p>Enter the meteorological parameters below.</p>
 
     <form action="/result" method="post">
 
         <div class="form-grid">
 
-            <input type="number" name="MonsoonIntensity" placeholder="Monsoon Intensity" required>
+            <input type="number" name="Temp"
+                   placeholder="Temperature (°C)" required>
 
-            <input type="number" name="TopographyDrainage" placeholder="Topography Drainage" required>
+            <input type="number" name="Humidity"
+                   placeholder="Humidity (%)" required>
 
-            <input type="number" name="RiverManagement" placeholder="River Management" required>
+            <input type="number" name="cloud_cover"
+                   placeholder="Cloud Cover (%)" required>
 
-            <input type="number" name="ClimateChange" placeholder="Climate Change" required>
+            <input type="number" step="0.1" name="ANNUAL"
+                   placeholder="Annual Rainfall (mm)" required>
 
-            <input type="number" name="DrainageSystems" placeholder="Drainage Systems" required>
+            <input type="number" step="0.1" name="jan_feb"
+                   placeholder="Jan-Feb Rainfall (mm)" required>
 
-            <input type="number" name="CoastalVulnerability" placeholder="Coastal Vulnerability" required>
+            <input type="number" step="0.1" name="mar_may"
+                   placeholder="Mar-May Rainfall (mm)" required>
 
-            <input type="number" name="Landslides" placeholder="Landslides" required>
+            <input type="number" step="0.1" name="jun_sep"
+                   placeholder="Jun-Sep Rainfall (mm)" required>
 
-            <input type="number" name="Watersheds" placeholder="Watersheds" required>
+            <input type="number" step="0.1" name="oct_dec"
+                   placeholder="Oct-Dec Rainfall (mm)" required>
+
+            <input type="number" step="0.1" name="avgjune"
+                   placeholder="Average June Rainfall (mm)" required>
+
+            <input type="number" step="0.1" name="sub"
+                   placeholder="Sub Rainfall Index" required>
 
         </div>
 

@@ -24,14 +24,16 @@ def predict():
 def result():
     try:
         values = [
-            float(request.form['MonsoonIntensity']),
-            float(request.form['TopographyDrainage']),
-            float(request.form['RiverManagement']),
-            float(request.form['ClimateChange']),
-            float(request.form['DrainageSystems']),
-            float(request.form['CoastalVulnerability']),
-            float(request.form['Landslides']),
-            float(request.form['Watersheds'])
+            float(request.form['Temp']),
+            float(request.form['Humidity']),
+            float(request.form['cloud_cover']),
+            float(request.form['ANNUAL']),
+            float(request.form['jan_feb']),
+            float(request.form['mar_may']),
+            float(request.form['jun_sep']),
+            float(request.form['oct_dec']),
+            float(request.form['avgjune']),
+            float(request.form['sub'])
         ]
 
         prediction = model.predict([values])[0]
