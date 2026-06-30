@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flood Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🌊 Flood Prediction Form</h1>
+
+    <p>Enter the environmental parameters below.</p>
+
+    <form action="/result" method="post">
+
+        <div class="form-grid">
+
+            <input type="number" name="MonsoonIntensity" placeholder="Monsoon Intensity" required>
+
+            <input type="number" name="TopographyDrainage" placeholder="Topography Drainage" required>
+
+            <input type="number" name="RiverManagement" placeholder="River Management" required>
+
+            <input type="number" name="ClimateChange" placeholder="Climate Change" required>
+
+            <input type="number" name="DrainageSystems" placeholder="Drainage Systems" required>
+
+            <input type="number" name="CoastalVulnerability" placeholder="Coastal Vulnerability" required>
+
+            <input type="number" name="Landslides" placeholder="Landslides" required>
+
+            <input type="number" name="Watersheds" placeholder="Watersheds" required>
+
+        </div>
+
+        <button type="submit">Predict Flood Risk</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
