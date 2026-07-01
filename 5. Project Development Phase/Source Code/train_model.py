@@ -54,7 +54,25 @@ xgb_model.fit(X_train, y_train)
 xgb_pred = xgb_model.predict(X_test)
 print("XGBoost Accuracy:", accuracy_score(y_test, xgb_pred))
 
-# Save best model
+# Save model
 joblib.dump(xgb_model, "floods.save")
-
 print("Model saved successfully!")
+
+# Find one row that the model predicts as Flood
+print("\nSearching for a row predicted as Flood...\n")
+
+found = False
+
+for i in range(len(df)):
+    row = df.iloc[i]
+    sample = [row.drop('flood').tolist()]
+    pred = xgb_model.predict(sample)[0]
+
+    if pred == 1:
+        print("Found a row predicted as Flood:\n")
+        print(row)
+        found = True
+        break
+
+if not found:
+    print("No row predicted as Flood.")
